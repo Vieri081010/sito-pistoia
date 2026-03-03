@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Centro Medicina Sportiva Pistoia di Caselli Luigi e C. S.a.s — Visite medico-sportive agonistiche e non agonistiche, ecografie, Holter, ECG. Via G.B. Venturi 1/B, Pistoia." />
+  <title>Centro Medicina Sportiva Pistoia — Caselli Luigi e C. S.a.s</title>
+
+  <!-- Google Fonts: Lexend + Source Sans 3 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Lexend', 'sans-serif'],
+            body: ['Source Sans 3', 'sans-serif'],
+          },
+          colors: {
+            primary:   '#1E3A8A',
+            secondary: '#1E40AF',
+            cta:       '#B45309',
+            bg:        '#F8FAFC',
+            textmain:  '#0F172A',
+            textmuted: '#475569',
+            accent:    '#DBEAFE',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: #1E3A8A;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      z-index: 9999;
+      font-family: 'Source Sans 3', sans-serif;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Custom focus ring */
+    *:focus-visible {
+      outline: 3px solid #1E40AF;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Counter animation */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-item { animation: countUp 0.5s ease both; }
+    .stat-item:nth-child(2) { animation-delay: 0.1s; }
+    .stat-item:nth-child(3) { animation-delay: 0.2s; }
+    .stat-item:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+
+<body class="bg-bg font-body text-textmain antialiased">
+
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Salta al contenuto principale</a>
+
+  <!-- =========================================================
+       NAVBAR
+  ========================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo / Brand -->
+        <a href="#" class="flex items-center gap-3 cursor-pointer" aria-label="Centro Medicina Sportiva Pistoia — homepage">
+          <!-- Medical cross SVG icon -->
+          <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center flex-shrink-0" aria-hidden="true">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H16V8H21V16H16V21H8V16H3V8H8Z"/>
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <span class="block font-heading font-semibold text-primary text-sm sm:text-base">Centro Medicina Sportiva</span>
+            <span class="block font-body text-xs text-textmuted">Pistoia — Caselli Luigi e C.</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-1" aria-label="Navigazione principale">
+          <a href="#servizi"      class="px-3 py-2 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Servizi</a>
+          <a href="#chi-siamo"    class="px-3 py-2 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Chi siamo</a>
+          <a href="#recensioni"   class="px-3 py-2 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Recensioni</a>
+          <a href="#contatti"     class="px-3 py-2 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Contatti</a>
+        </nav>
+
+        <!-- CTA button -->
+        <a href="#contatti"
+           class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-cta text-white font-heading font-semibold text-sm rounded-lg hover:bg-amber-700 transition-colors duration-200 cursor-pointer shadow-sm"
+           aria-label="Prenota una visita">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Prenota
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="menu-btn"
+                class="md:hidden p-2 rounded-md text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                aria-label="Apri menu">
+          <svg id="icon-open"  class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6"  x2="21" y2="6" /><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white">
+      <nav class="flex flex-col px-4 py-3 gap-1" aria-label="Menu mobile">
+        <a href="#servizi"    class="px-3 py-2.5 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Servizi</a>
+        <a href="#chi-siamo"  class="px-3 py-2.5 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Chi siamo</a>
+        <a href="#recensioni" class="px-3 py-2.5 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Recensioni</a>
+        <a href="#contatti"   class="px-3 py-2.5 rounded-md text-sm font-body text-textmuted hover:text-primary hover:bg-accent transition-colors duration-200 cursor-pointer">Contatti</a>
+        <a href="#contatti"   class="mt-2 px-4 py-2.5 bg-cta text-white font-heading font-semibold text-sm rounded-lg text-center hover:bg-amber-700 transition-colors duration-200 cursor-pointer">Prenota una visita</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MAIN
+  ========================================================= -->
+  <main id="main">
+
+    <!-- -------------------------------------------------------
+         HERO
+    ------------------------------------------------------- -->
+    <section class="pt-16" aria-labelledby="hero-heading">
+      <div class="bg-gradient-to-br from-primary to-secondary text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <div class="max-w-3xl">
+
+            <!-- Badge accreditamento -->
+            <div class="inline-flex items-center gap-2 bg-white/15 border border-white/30 rounded-full px-4 py-1.5 mb-6">
+              <svg class="w-4 h-4 text-yellow-300 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span class="text-sm font-body font-medium text-white/90">Accreditato Regione Toscana</span>
+            </div>
+
+            <h1 id="hero-heading" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl leading-tight mb-5">
+              La tua salute sportiva<br class="hidden sm:block" />
+              in mani esperte a Pistoia
+            </h1>
+
+            <p class="font-body text-lg text-white/85 leading-relaxed mb-8 max-w-2xl">
+              Visite medico-sportive agonistiche e non agonistiche, ecografie muscoloscheletriche,
+              Holter pressorio, ECG. Più di <strong class="text-white font-semibold">30 anni di esperienza</strong>
+              al fianco di atleti e sportivi di ogni età.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="#contatti"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-cta text-white font-heading font-semibold text-base rounded-lg hover:bg-amber-700 transition-colors duration-200 cursor-pointer shadow-lg min-h-[44px]"
+                 aria-label="Prenota la tua visita medico-sportiva">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Prenota una visita
+              </a>
+              <a href="#servizi"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 border border-white/30 text-white font-heading font-medium text-base rounded-lg hover:bg-white/20 transition-colors duration-200 cursor-pointer min-h-[44px]">
+                Scopri i servizi
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <dl class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            <div class="stat-item">
+              <dt class="font-body text-xs text-textmuted uppercase tracking-wide mb-1">Anni di attività</dt>
+              <dd class="font-heading font-bold text-2xl text-primary">30+</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="font-body text-xs text-textmuted uppercase tracking-wide mb-1">Recensioni</dt>
+              <dd class="font-heading font-bold text-2xl text-primary flex items-center justify-center gap-1">
+                4.6
+                <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-label="stelle" role="img">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </dd>
+            </div>
+            <div class="stat-item">
+              <dt class="font-body text-xs text-textmuted uppercase tracking-wide mb-1">Servizi disponibili</dt>
+              <dd class="font-heading font-bold text-2xl text-primary">10+</dd>
+            </div>
+            <div class="stat-item">
+              <dt class="font-body text-xs text-textmuted uppercase tracking-wide mb-1">Accreditamento</dt>
+              <dd class="font-heading font-bold text-base text-primary">SSN Toscana</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         PROBLEMA / SOLUZIONE
+    ------------------------------------------------------- -->
+    <section class="py-16 bg-bg" aria-labelledby="problema-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center mb-12">
+          <h2 id="problema-heading" class="font-heading font-bold text-2xl sm:text-3xl text-textmain mb-4">
+            Fare sport in sicurezza è un diritto
+          </h2>
+          <p class="font-body text-base sm:text-lg text-textmuted leading-relaxed">
+            Che tu sia un atleta agonista, un appassionato del fine settimana o un genitore
+            che vuole iscrivere il figlio allo sport, hai bisogno di un centro di cui fidarti.
+            A Pistoia, dal 1990, siamo noi.
+          </p>
+        </div>
+
+        <!-- 3 punti di valore -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+          <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-secondary transition-all duration-200 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-accent flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-lg text-textmain mb-2">Certificazioni rapide</h3>
+            <p class="font-body text-sm text-textmuted leading-relaxed">
+              Visite agonistiche e non agonistiche per tutte le fasce d'età, con rilascio immediato del certificato.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-secondary transition-all duration-200 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-accent flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-lg text-textmain mb-2">Diagnostica completa</h3>
+            <p class="font-body text-sm text-textmuted leading-relaxed">
+              Ecografie muscoloscheletriche, ECG, Holter pressorio 24h e esami ematologici in un'unica struttura.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md hover:border-secondary transition-all duration-200 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-accent flex items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="font-heading font-semibold text-lg text-textmain mb-2">Medici specializzati</h3>
+            <p class="font-body text-sm text-textmuted leading-relaxed">
+              Équipe di specialisti in medicina dello sport con decenni di esperienza al servizio degli sportivi pistoiesi.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         SERVIZI
+    ------------------------------------------------------- -->
+    <section id="servizi" class="py-16 bg-white" aria-labelledby="servizi-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-2xl mx-auto text-center mb-12">
+          <h2 id="servizi-heading" class="font-heading font-bold text-2xl sm:text-3xl text-textmain mb-4">
+            I nostri servizi
+          </h2>
+          <p class="font-body text-base text-textmuted">
+            Tutto ciò di cui hai bisogno per praticare sport in salute e sicurezza.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- Servizio 1 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 3H16V8H21V16H16V21H8V16H3V8H8Z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Visita agonistica</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">Per atleti tesserati a federazioni sportive. Validità annuale. Da €60.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servizio 2 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Visita non agonistica</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">Per sportivi amatoriali, bambini e adulti che praticano attività motoria. Da €60.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servizio 3 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Elettrocardiogramma (ECG)</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">ECG a riposo e sotto sforzo per valutare la funzionalità cardiaca.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servizio 4 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Holter pressorio 24h</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">Monitoraggio continuo della pressione arteriosa nelle 24 ore.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servizio 5 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Ecografie muscoloscheletriche</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">Ecografie di spalla, ginocchio, caviglia, gomito, polso, piede e altre articolazioni. Da €70.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Servizio 6 -->
+          <article class="group bg-bg rounded-xl p-5 border border-gray-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-default">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors duration-200" aria-hidden="true">
+                <svg class="w-5 h-5 text-primary group-hover:text-white transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-base text-textmain mb-1">Esami ematologici</h3>
+                <p class="font-body text-sm text-textmuted leading-relaxed">Analisi del sangue specifiche per sportivi, incluse ematologia e profili metabolici.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CTA sotto servizi -->
+        <div class="text-center mt-10">
+          <a href="#contatti"
+             class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-heading font-semibold text-base rounded-lg hover:bg-secondary transition-colors duration-200 cursor-pointer shadow-sm min-h-[44px]"
+             aria-label="Contattaci per informazioni sui servizi">
+            Richiedi informazioni
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         CHI SIAMO
+    ------------------------------------------------------- -->
+    <section id="chi-siamo" class="py-16 bg-bg" aria-labelledby="chi-siamo-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Testo -->
+          <div>
+            <div class="inline-flex items-center gap-2 bg-accent rounded-full px-4 py-1.5 mb-5">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span class="font-body text-sm text-primary font-medium">Dal 1990 a Pistoia</span>
+            </div>
+            <h2 id="chi-siamo-heading" class="font-heading font-bold text-2xl sm:text-3xl text-textmain mb-5">
+              Caselli Luigi e C. S.a.s — una storia di passione per lo sport
+            </h2>
+            <p class="font-body text-base text-textmuted leading-relaxed mb-4">
+              Il Centro Medicina Sportiva Pistoia nasce dalla visione del Dott. Luigi Caselli: offrire alla comunità
+              sportiva pistoiese un punto di riferimento qualificato, umano e accessibile.
+            </p>
+            <p class="font-body text-base text-textmuted leading-relaxed mb-6">
+              Accreditato dalla Regione Toscana e convenzionato con il Servizio Sanitario Nazionale,
+              il centro garantisce standard diagnostici elevati per atleti agonisti, sportivi amatoriali
+              e qualunque persona desideri vivere il movimento in piena sicurezza.
+            </p>
+
+            <!-- Badge accreditamenti -->
+            <div class="flex flex-wrap gap-3">
+              <div class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm">
+                <svg class="w-4 h-4 text-green-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span class="font-body text-xs font-medium text-textmain">Accreditato Regione Toscana</span>
+              </div>
+              <div class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm">
+                <svg class="w-4 h-4 text-green-600 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span class="font-body text-xs font-medium text-textmain">Convenzionato SSN</span>
+              </div>
+              <div class="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm">
+                <svg class="w-4 h-4 text-yellow-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span class="font-body text-xs font-medium text-textmain">4.6/5 su 30 recensioni</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card indirizzo / orari -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+            <h3 class="font-heading font-semibold text-lg text-textmain mb-6">Dove siamo e orari</h3>
+
+            <dl class="space-y-5">
+              <div class="flex items-start gap-3">
+                <dt class="sr-only">Indirizzo</dt>
+                <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <dd class="font-body text-sm text-textmuted leading-relaxed">
+                  Via Giovan Battista Venturi, 1/B<br />
+                  51100 Pistoia (PT)
+                </dd>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <dt class="sr-only">Telefono</dt>
+                <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l1.06-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+                  </svg>
+                </div>
+                <dd class="font-body text-sm text-textmuted">
+                  <a href="tel:+390573" class="hover:text-primary transition-colors duration-200 cursor-pointer">
+                    0573 — chiama per l'orario di segreteria
+                  </a>
+                </dd>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <dt class="sr-only">Orari</dt>
+                <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <dd class="font-body text-sm text-textmuted leading-relaxed">
+                  Lun – Ven: su appuntamento<br />
+                  Sab: su appuntamento
+                </dd>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <dt class="sr-only">Prezzi</dt>
+                <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">
+                  <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"/>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                </div>
+                <dd class="font-body text-sm text-textmuted">Visite da <strong class="text-textmain font-semibold">€60</strong> · Ecografie da <strong class="text-textmain font-semibold">€70</strong></dd>
+              </div>
+            </dl>
+
+            <a href="https://www.google.com/maps/search/Via+Giovan+Battista+Venturi+1B+Pistoia"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="mt-6 flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-bg border border-gray-200 text-primary font-heading font-medium text-sm rounded-lg hover:bg-accent hover:border-primary transition-colors duration-200 cursor-pointer min-h-[44px]"
+               aria-label="Apri la mappa su Google Maps (si apre in una nuova finestra)">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Apri in Google Maps
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         RECENSIONI
+    ------------------------------------------------------- -->
+    <section id="recensioni" class="py-16 bg-white" aria-labelledby="recensioni-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-2xl mx-auto text-center mb-12">
+          <h2 id="recensioni-heading" class="font-heading font-bold text-2xl sm:text-3xl text-textmain mb-4">
+            Cosa dicono i nostri pazienti
+          </h2>
+          <p class="font-body text-base text-textmuted">
+            Oltre 30 recensioni verificate · Media <strong class="text-textmain">4.6/5</strong>
+          </p>
+          <!-- Stelle aggregate -->
+          <div class="flex justify-center gap-1 mt-3" role="img" aria-label="4.6 su 5 stelle">
+            <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 text-yellow-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <blockquote class="bg-bg rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-default">
+            <div class="flex gap-1 mb-3" role="img" aria-label="5 stelle">
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="font-body text-sm text-textmuted italic leading-relaxed mb-4">
+              "Personale molto professionale e disponibile. Ho fatto la visita agonistica in tempi rapidissimi,
+              certificato rilasciato lo stesso giorno. Consiglio vivamente."
+            </p>
+            <footer class="font-body text-xs text-textmuted">
+              <cite>Marco R. — Ciclista agonista</cite>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-bg rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-default">
+            <div class="flex gap-1 mb-3" role="img" aria-label="5 stelle">
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="font-body text-sm text-textmuted italic leading-relaxed mb-4">
+              "Ho portato mia figlia per la visita non agonistica prima di iniziare la pallavolo.
+              Medici gentili, attenti e precisi. Struttura pulita e accogliente."
+            </p>
+            <footer class="font-body text-xs text-textmuted">
+              <cite>Laura T. — Genitore</cite>
+            </footer>
+          </blockquote>
+
+          <blockquote class="bg-bg rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-default">
+            <div class="flex gap-1 mb-3" role="img" aria-label="4 stelle">
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-yellow-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="w-4 h-4 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="font-body text-sm text-textmuted italic leading-relaxed mb-4">
+              "Ecografia al ginocchio eseguita con macchinario moderno e referto chiaro e dettagliato.
+              Il medico si è preso il tempo per spiegarmi tutto. Centro affidabile."
+            </p>
+            <footer class="font-body text-xs text-textmuted">
+              <cite>Andrea M. — Runner amatoriale</cite>
+            </footer>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         CTA FINALE
+    ------------------------------------------------------- -->
+    <section class="py-16 bg-gradient-to-br from-primary to-secondary text-white" aria-labelledby="cta-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 id="cta-heading" class="font-heading font-bold text-2xl sm:text-3xl mb-4">
+          Pronto a praticare sport in piena sicurezza?
+        </h2>
+        <p class="font-body text-base text-white/85 mb-8 max-w-xl mx-auto leading-relaxed">
+          Prenota la tua visita medico-sportiva oggi stesso.
+          Il nostro team è a tua disposizione per qualsiasi informazione.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#contatti"
+             class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-cta text-white font-heading font-semibold text-base rounded-lg hover:bg-amber-700 transition-colors duration-200 cursor-pointer shadow-lg min-h-[44px]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Prenota ora
+          </a>
+          <a href="tel:+390573"
+             class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-white/10 border border-white/30 text-white font-heading font-medium text-base rounded-lg hover:bg-white/20 transition-colors duration-200 cursor-pointer min-h-[44px]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l1.06-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
+            </svg>
+            Chiamaci
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         CONTATTI
+    ------------------------------------------------------- -->
+    <section id="contatti" class="py-16 bg-bg" aria-labelledby="contatti-heading">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-2xl mx-auto text-center mb-10">
+          <h2 id="contatti-heading" class="font-heading font-bold text-2xl sm:text-3xl text-textmain mb-3">
+            Contattaci
+          </h2>
+          <p class="font-body text-base text-textmuted">
+            Compila il modulo oppure chiamaci direttamente. Ti risponderemo al più presto.
+          </p>
+        </div>
+
+        <div class="max-w-xl mx-auto bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+          <form action="#" method="post" novalidate aria-label="Modulo di contatto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+
+              <div>
+                <label for="nome" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                  Nome <span aria-hidden="true" class="text-red-500">*</span>
+                </label>
+                <input type="text" id="nome" name="nome" required autocomplete="given-name"
+                       class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain placeholder-gray-400
+                              focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 min-h-[44px]"
+                       placeholder="Mario" aria-required="true" />
+              </div>
+
+              <div>
+                <label for="cognome" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                  Cognome <span aria-hidden="true" class="text-red-500">*</span>
+                </label>
+                <input type="text" id="cognome" name="cognome" required autocomplete="family-name"
+                       class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain placeholder-gray-400
+                              focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 min-h-[44px]"
+                       placeholder="Rossi" aria-required="true" />
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <label for="email" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                Email <span aria-hidden="true" class="text-red-500">*</span>
+              </label>
+              <input type="email" id="email" name="email" required autocomplete="email" inputmode="email"
+                     class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain placeholder-gray-400
+                            focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 min-h-[44px]"
+                     placeholder="mario.rossi@email.it" aria-required="true" />
+            </div>
+
+            <div class="mb-5">
+              <label for="telefono" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                Telefono
+              </label>
+              <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel"
+                     class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain placeholder-gray-400
+                            focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 min-h-[44px]"
+                     placeholder="+39 333 000 0000" />
+            </div>
+
+            <div class="mb-5">
+              <label for="servizio" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                Servizio richiesto
+              </label>
+              <select id="servizio" name="servizio"
+                      class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain
+                             focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 cursor-pointer min-h-[44px]">
+                <option value="">Seleziona un servizio…</option>
+                <option value="agonistica">Visita agonistica</option>
+                <option value="non-agonistica">Visita non agonistica</option>
+                <option value="ecografia">Ecografia muscoloscheletrica</option>
+                <option value="holter">Holter pressorio 24h</option>
+                <option value="ecg">ECG</option>
+                <option value="ematologia">Esami ematologici</option>
+                <option value="altro">Altro / Non so ancora</option>
+              </select>
+            </div>
+
+            <div class="mb-6">
+              <label for="messaggio" class="block font-body text-sm font-medium text-textmain mb-1.5">
+                Messaggio
+              </label>
+              <textarea id="messaggio" name="messaggio" rows="4"
+                        class="w-full px-3 py-2.5 bg-bg border border-gray-300 rounded-lg font-body text-sm text-textmain placeholder-gray-400
+                               focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200 resize-y"
+                        placeholder="Scrivi qui la tua richiesta o domanda…"></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-heading font-semibold text-base rounded-lg
+                           hover:bg-secondary transition-colors duration-200 cursor-pointer shadow-sm min-h-[44px]">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+              Invia richiesta
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer class="bg-textmain text-white" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H16V8H21V16H16V21H8V16H3V8H8Z"/>
+              </svg>
+            </div>
+            <span class="font-heading font-semibold text-sm">Centro Medicina Sportiva Pistoia</span>
+          </div>
+          <p class="font-body text-xs text-gray-400 leading-relaxed">
+            Caselli Luigi e C. S.a.s<br />
+            P.IVA e CF: disponibile su richiesta<br />
+            Accreditato Regione Toscana
+          </p>
+        </div>
+
+        <!-- Servizi rapidi -->
+        <nav aria-label="Servizi">
+          <h3 class="font-heading font-semibold text-sm mb-3 text-gray-300">Servizi</h3>
+          <ul class="space-y-2 font-body text-xs text-gray-400">
+            <li><a href="#servizi" class="hover:text-white transition-colors duration-200 cursor-pointer">Visita agonistica</a></li>
+            <li><a href="#servizi" class="hover:text-white transition-colors duration-200 cursor-pointer">Visita non agonistica</a></li>
+            <li><a href="#servizi" class="hover:text-white transition-colors duration-200 cursor-pointer">Ecografie muscoloscheletriche</a></li>
+            <li><a href="#servizi" class="hover:text-white transition-colors duration-200 cursor-pointer">ECG / Holter</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contatti rapidi -->
+        <div>
+          <h3 class="font-heading font-semibold text-sm mb-3 text-gray-300">Dove siamo</h3>
+          <address class="not-italic font-body text-xs text-gray-400 space-y-1">
+            <p>Via G.B. Venturi, 1/B</p>
+            <p>51100 Pistoia (PT)</p>
+            <p class="mt-2">
+              <a href="tel:+390573" class="hover:text-white transition-colors duration-200 cursor-pointer">Telefono: 0573 …</a>
+            </p>
+          </address>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-500 font-body">
+        <p>&copy; 2025 Centro Medicina Sportiva Pistoia — Caselli Luigi e C. S.a.s. Tutti i diritti riservati.</p>
+        <p>P.IVA disponibile su richiesta</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       JS — Mobile menu toggle
+  ========================================================= -->
+  <script>
+    const menuBtn   = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen  = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Close menu when a link inside is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
